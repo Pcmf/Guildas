@@ -1,0 +1,37 @@
+.container{
+    width: 100%;
+    padding: 50px;
+}
+
+
+.tabela {
+    width: 80%;
+    margin: auto;
+  }
+
+.mat-form-field{
+      width: 50%;
+      margin: auto;
+}
+
+table{
+    width: 100%;
+}
+
+.mat-cell:hover {
+    cursor: pointer;
+}
+
+th.mat-sort-header-sorted {
+color: black;
+}
+  
+.menu{
+    position: fixed;
+    top: 50px;
+    left: 90%;
+}
+
+.mat-form-field ~ .mat-form-field{
+    margin-left: 20px;
+}

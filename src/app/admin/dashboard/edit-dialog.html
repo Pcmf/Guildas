@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Player: {{data.id}}</h1>
+<div class="nickimage">
+  <img [src]="data.nickname" alt="nickname">
+</div> 
+<div mat-dialog-content>
+  <p>Editar dados</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.name" placeholder="Nome"> 
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.telm" placeholder="Telemovel">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.email" placeholder="Email">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.birthyear" placeholder="Ano Nascimento">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Guilda</mat-label>
+    <mat-select [(ngModel)]="data.guilda">
+      <mat-option *ngFor="let g of guildas" [value]="g.id" >
+        {{g.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.txdeath" placeholder="Tx Morte/Abate">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.txheadshot" placeholder="Tx Tiros Cabeça">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [ngModel]="data.date" placeholder="Data de Registo">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [ngModel]="data.updata" placeholder="Ultima Atualização">
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

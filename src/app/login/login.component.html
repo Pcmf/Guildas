@@ -1,0 +1,22 @@
+<div class="container-fluid">
+      <form class="center-form panel" #f="ngForm" (submit)="submit(f.value)">
+        <h2 class="mat-h2">Entre na </h2>
+        <h1 class="mat-display-1" >GUILDA</h1>
+        
+        
+        <mat-form-field class="center-full-width">
+          <input matInput placeholder="Utilizador" #user ngModel name="username" value="" required>
+        </mat-form-field>
+  
+        <mat-form-field class="center-full-width">
+          <input matInput type="password" #pass ngModel placeholder="Senha" name="password" required minlength="3">
+        </mat-form-field>
+        <mat-error *ngIf="!f.valid && user.touched && pass.touched">
+          <small>Campos obrigatórios</small>
+        </mat-error>
+        <mat-error *ngIf="erro">
+          <small>Verifique utilizador e senha!</small>
+        </mat-error>
+        <button [disabled]="!f.valid" mat-stroked-button type="submit" color="primary">Entrar</button>
+      </form>
+  </div>

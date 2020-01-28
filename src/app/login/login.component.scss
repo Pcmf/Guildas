@@ -1,0 +1,33 @@
+.container-fluid{
+    background-image: url("../../assets/brian-mcgowan-itRfuFf1gdY-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+  
+    background-size: cover;
+    background-position: top;
+    height: 100vh;
+    color: blue;
+  
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .center-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 100px;
+      max-width: 120px;
+      width: 100%;
+      padding-top: 5%;
+    }
+    
+    .center-full-width {
+      width: 100%;
+    }
+    
+    .mat-display-1{
+      margin: 0 0 10px;
+    }
