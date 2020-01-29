@@ -1,12 +1,22 @@
 .container{
     width: 100%;
-    padding: 50px;
+   // padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
 }
 
+.menu{
+    position: fixed;
+    top: 50px;
+    left: 5%;
+}
 
 .tabela {
+    position: static;
     width: 80%;
     margin: auto;
+    margin-top: 100px;
   }
 
 .mat-form-field{
@@ -26,11 +36,7 @@ th.mat-sort-header-sorted {
 color: black;
 }
   
-.menu{
-    position: fixed;
-    top: 50px;
-    left: 90%;
-}
+
 
 .mat-form-field ~ .mat-form-field{
     margin-left: 20px;

@@ -1,6 +1,8 @@
 <h1 mat-dialog-title>Player: {{data.id}}</h1>
 <div class="nickimage">
-  <img [src]="data.nickname" alt="nickname">
+  <!--  <img [src]="data.nickname" alt="nickname"> -->
+  <app-load-image (imageB64)="receiveImage($event)"></app-load-image>
+  <img [src]="data.nikname" alt="" height="60">
 </div>
 <div mat-dialog-content>
   <p>Editar dados</p>
@@ -31,14 +33,17 @@
     <input matInput [(ngModel)]="data.txheadshot" placeholder="Tx Tiros Cabeça">
   </mat-form-field>
   <mat-form-field>
+    <input matInput [(ngModel)]="data.linkface" placeholder="Link do Facebook">
+  </mat-form-field>
+  <mat-form-field *ngIf="data.id>0">
     <input matInput [ngModel]="data.date" placeholder="Data de Registo">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field *ngIf="data.id>0">
     <input matInput [ngModel]="data.updata" placeholder="Ultima Atualização">
   </mat-form-field>
 
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Guardar</button>
 </div>

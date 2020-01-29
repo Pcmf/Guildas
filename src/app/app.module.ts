@@ -11,6 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent, EditDialog } from './admin/dashboard/dashboard.component';
 import { DataService } from './services/data.service';
 import { RegisterComponent } from './players/register/register.component';
+import { LoadImageComponent } from './load-image/load-image.component';
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { LoadImageService } from './services/load-image.service';
+import { EmailComponent } from './admin/email/email.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,9 @@ import { RegisterComponent } from './players/register/register.component';
     LoginComponent,
     DashboardComponent,
     RegisterComponent,
-    EditDialog
+    EditDialog,
+    LoadImageComponent,
+    EmailComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,7 @@ import { RegisterComponent } from './players/register/register.component';
     ReactiveFormsModule
   ],
   entryComponents: [EditDialog],
-  providers: [DataService],
+  providers: [DataService, NgxImageCompressService, LoadImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

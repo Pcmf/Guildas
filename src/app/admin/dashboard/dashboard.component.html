@@ -8,16 +8,20 @@
           </button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item>
-              <mat-icon>dialpad</mat-icon>
-              <span>Redial</span>
+              <mat-icon>notifications</mat-icon>
+              <span>Enviar Notificações FB</span>
             </button>
-            <button mat-menu-item disabled>
-              <mat-icon>voicemail</mat-icon>
-              <span>Check voice mail</span>
+            <button mat-menu-item (click)="sendEmails(0)">
+              <mat-icon>email</mat-icon>
+              <span>Enviar emails</span>
             </button>
-            <button mat-menu-item>
-              <mat-icon>notifications_off</mat-icon>
-              <span>Disable alerts</span>
+            <button mat-menu-item (click)="addPlayer()">
+                <mat-icon>person_add</mat-icon>
+                <span>Criar Player</span>
+              </button>
+            <button mat-menu-item (click)="logOut()">
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Sair</span>
             </button>
           </mat-menu>
     </div>
@@ -26,12 +30,19 @@
         <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
+
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
             <!-- id Column -->
             <ng-container matColumnDef="id" >
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
                 <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="nikname">
+                <th mat-header-cell *matHeaderCellDef> Nik Name </th>
+                <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> <img [src]="element.nikname" alt="" height="40"> </td>
             </ng-container>
 
             <!-- Name Column -->
@@ -55,17 +66,17 @@
             <!-- Guilda Column -->
             <ng-container matColumnDef="guilda">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Guilda </th>
-                <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> {{element.guilda}} </td>
+                <td mat-cell *matCellDef="let element" (click)="selectRow(element)">{{element.guilda}} </td>
             </ng-container>
 
             <!-- Weight Column -->
-            <ng-container matColumnDef="txdeaths">
+            <ng-container matColumnDef="txdeath">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Tx Mortes e Abates </th>
                 <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> {{element.txdeath}} </td>
             </ng-container>
 
             <!-- Symbol Column -->
-            <ng-container matColumnDef="txheadshots">
+            <ng-container matColumnDef="txheadshot">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Tx Tiros na Cabeça </th>
                 <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> {{element.txheadshot}} </td>
             </ng-container>
