@@ -14,7 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
     imports: [
         MatInputModule,
@@ -31,6 +31,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatSidenavModule,
         MatExpansionModule,
         MatCheckboxModule,
+        MatMenuModule,
     ],
     exports: [
         MatInputModule,
@@ -47,5 +48,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatSidenavModule,
         MatExpansionModule,
         MatCheckboxModule,
+        MatMenuModule
     ]
 }) export class MatModulesImports { }

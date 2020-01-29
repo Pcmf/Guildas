@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Player: {{data.id}}</h1>
 <div class="nickimage">
   <img [src]="data.nickname" alt="nickname">
-</div> 
+</div>
 <div mat-dialog-content>
   <p>Editar dados</p>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.name" placeholder="Nome"> 
+    <input matInput [(ngModel)]="data.name" placeholder="Nome">
   </mat-form-field>
   <mat-form-field>
     <input matInput [(ngModel)]="data.telm" placeholder="Telemovel">
@@ -19,7 +19,7 @@
   <mat-form-field>
     <mat-label>Guilda</mat-label>
     <mat-select [(ngModel)]="data.guilda">
-      <mat-option *ngFor="let g of guildas" [value]="g.id" >
+      <mat-option *ngFor="let g of guildas" [value]="g.id">
         {{g.nome}}
       </mat-option>
     </mat-select>
