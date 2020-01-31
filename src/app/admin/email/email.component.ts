@@ -38,13 +38,12 @@ export class EmailComponent implements OnInit {
       data: email
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.data.setData('emails/' + result.guilda, result).subscribe(
         (resp: any) => {
-            result.id = resp;
-            this.dataTemp.push(result);
+            result.id = +resp;
+            // result.erro = resp.erros;
+            this.dataTemp.unshift(result);
             this.dataSource = new MatTableDataSource(this.dataTemp);
-
         },
         error => {
           console.log(error);

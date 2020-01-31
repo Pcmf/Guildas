@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -7,13 +7,15 @@ import { DataService } from './data.service';
 })
 export class AuthGuardService {
   constructor(private loginService: DataService,
-              private router: Router) { }
+              private router: Router) {
+               }
 
   canActivate() {
-    if (this.loginService.isLoggedIn()) {
+    if (this.loginService.isLoggedIn() && this.loginService.getUserType() == 'Player') {
       return true;
     }
     this.router.navigate(['/login']);
     return false;
   }
+
 }

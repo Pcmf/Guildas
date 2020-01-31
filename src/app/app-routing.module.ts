@@ -5,11 +5,12 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RegisterComponent } from './players/register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { EmailComponent } from './admin/email/email.component';
+import { AuthGuardAdminService } from './services/auth-guard-admin.service';
 
 const routes: Routes = [
-  { path: 'player', component: RegisterComponent, canActivate: [AuthGuardService]},
-  { path: 'admin' , component: DashboardComponent, canActivate: [AuthGuardService]},
-  { path: 'emails' , component: EmailComponent, canActivate: [AuthGuardService]},
+  { path: 'players', component: RegisterComponent, canActivate: [AuthGuardService]},
+  { path: 'admin' , component: DashboardComponent, canActivate: [AuthGuardAdminService]},
+  { path: 'emails' , component: EmailComponent, canActivate: [AuthGuardAdminService]},
   { path: 'login' , component: LoginComponent},
   { path: '**', component: LoginComponent}
 ];

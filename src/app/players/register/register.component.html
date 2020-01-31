@@ -1,1 +1,57 @@
-<p>register works!</p>
+<div class="container">
+    <header>
+        <h2 class="titule">Formulario de registo na Guilda X</h2>
+    </header>
+
+    <section>
+        <form #f="ngForm" (submit)="saveForm(f.value)">
+            <div class="nickimage">
+                <!--  <img [src]="data.nickname" alt="nickname"> -->
+                <app-load-image (imageB64)="receiveImage($event)"></app-load-image>
+                <img [src]="form.nikname" alt="" height="60">
+            </div>
+            <div mat-content>
+                <p>Editar dados</p>
+                <mat-form-field>
+                    <input matInput #name="ngModel" name="name" [(ngModel)]="form.name" placeholder="Nome">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #telm="ngModel" name="telm" [(ngModel)]="form.telm" placeholder="Telemovel">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #email="ngModel" name="email" [(ngModel)]="form.email" placeholder="Email">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #birthyear="ngModel" name="birthyear" [(ngModel)]="form.birthyear" placeholder="Ano Nascimento">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Guilda</mat-label>
+                    <mat-select #guilda="ngModel" name="guilda" [(ngModel)]="form.guilda">
+                        <mat-option *ngFor="let g of guildas" [value]="g.id">
+                            {{g.nome}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #txdeath="ngModel" name="txdeath" [(ngModel)]="form.txdeath" placeholder="Tx Morte/Abate">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #txheadshot="ngModel" name="txheadshot" [(ngModel)]="form.txheadshot" placeholder="Tx Tiros Cabeça">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #linkface="ngModel" name="linkface" [(ngModel)]="form.linkface" placeholder="Link do Facebook">
+                </mat-form-field>
+                <mat-form-field *ngIf="form.id>0">
+                    <input matInput [ngModel]="form.date" placeholder="Data de Registo">
+                </mat-form-field>
+                <mat-form-field *ngIf="form.id>0">
+                    <input matInput [ngModel]="form.updata" placeholder="Ultima Atualização">
+                </mat-form-field>
+            </div>
+            <div mat-actions>
+                <button mat-button type="reset" (click)="onNoClick()">Cancelar</button>
+                <button mat-button type="submit" >Guardar</button>
+            </div>
+        </form>
+    </section>
+</div>

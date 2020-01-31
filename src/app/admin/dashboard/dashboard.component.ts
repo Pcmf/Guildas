@@ -41,22 +41,20 @@ export class DashboardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.data.setData('players/' + result.id, result).subscribe(
-        (resp: any) => {
-          if (result.id == 0) {
-            result.id = resp;
-            this.dataTemp.push(result);
-            this.dataSource = new MatTableDataSource(this.dataTemp);
+      if (result) {
+        this.data.setData('players/' + result.id, result).subscribe(
+          (resp: any) => {
+            if (result.id == 0) {
+              result.id = resp;
+              this.dataTemp.push(result);
+              this.dataSource = new MatTableDataSource(this.dataTemp);
+            }
+          },
+          error => {
+            console.log(error);
           }
-
-          console.table(this.dataSource);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-
+        );
+      }
     });
   }
 
@@ -103,9 +101,10 @@ export class EditDialog {
     public dialogRef: MatDialogRef<EditDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dataService: DataService) {
-    this.dataService.getData('guildas').subscribe(
-      resp => this.guildas = resp
-    );
+        data.ative == 1 ? data.ative=true : data.ative=false;
+        this.dataService.getData('guildas').subscribe(
+          resp => this.guildas = resp
+        );
   }
 
   onNoClick(): void {

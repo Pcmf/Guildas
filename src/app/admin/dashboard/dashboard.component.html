@@ -36,7 +36,7 @@
             <!-- id Column -->
             <ng-container matColumnDef="id" >
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-                <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> {{element.id}} </td>
+                <td mat-cell *matCellDef="let element" [class.noAtive]="!element.ative" (click)="selectRow(element)"> {{element.id}} </td>
             </ng-container>
 
             <!-- Name Column -->
@@ -48,7 +48,7 @@
             <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
-                <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> {{element.name}} </td>
+                <td mat-cell *matCellDef="let element" [class.noAtive]="!element.ative" (click)="selectRow(element)"> {{element.name}} </td>
             </ng-container>
 
             <!-- Telemovel Column -->
@@ -82,7 +82,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
 </div>
