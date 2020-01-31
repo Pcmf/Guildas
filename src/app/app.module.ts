@@ -14,7 +14,7 @@ import { RegisterComponent } from './players/register/register.component';
 import { LoadImageComponent } from './load-image/load-image.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { LoadImageService } from './services/load-image.service';
-import { EmailComponent } from './admin/email/email.component';
+import { EmailComponent, NewEmailDialog } from './admin/email/email.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { EmailComponent } from './admin/email/email.component';
     RegisterComponent,
     EditDialog,
     LoadImageComponent,
-    EmailComponent
+    EmailComponent,
+    NewEmailDialog
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,7 @@ import { EmailComponent } from './admin/email/email.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  entryComponents: [EditDialog],
+  entryComponents: [EditDialog, NewEmailDialog],
   providers: [DataService, NgxImageCompressService, LoadImageService],
   bootstrap: [AppComponent]
 })

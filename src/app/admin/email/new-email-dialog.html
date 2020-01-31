@@ -1,0 +1,37 @@
+<div class="container">
+
+<h1 mat-dialog-title>Criar Email para Enviar</h1>
+
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Assunto</mat-label>
+    <input matInput [(ngModel)]="data.assunto" placeholder="Assunto" required>
+  </mat-form-field>
+
+  <mat-form-field class="textarea">
+    <mat-label>Texto do Email</mat-label>
+    <textarea matInput cdkTextareaAutosize
+    #autosize="cdkTextareaAutosize"
+    cdkAutosizeMinRows="1"
+    cdkAutosizeMaxRows="25" [(ngModel)]="data.corpoemail" placeholder="Texto do Email">
+    </textarea>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <mat-label>Guilda</mat-label>
+    <mat-select [(ngModel)]="data.guilda">
+      <mat-option value="99">Todas as guildas</mat-option>
+      <mat-option *ngFor="let g of guildas" [value]="g.id">
+        {{g.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Enviar</button>
+</div>
+
+  
+</div>
