@@ -23,7 +23,7 @@ export class DataService {
   }
   // Delete data form DB
   delete( param, data) {
-    return this.http.delete( this.ADDRESS + param ).pipe(
+    return this.http.delete( this.ADDRESS + param + data ).pipe(
       map(
         resp => console.log(resp),
         error => console.log('Erro ' + error)
@@ -75,7 +75,7 @@ export class DataService {
 
   logout() {
     sessionStorage.clear();
-    window.location.replace('/');
+    window.location.replace('/Guildas/');
   }
 
 }

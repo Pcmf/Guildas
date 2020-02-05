@@ -41,4 +41,9 @@ export class RegisterComponent implements OnInit {
   receiveImage(event) {
     this.form.nikname = event;
   }
+
+  cancel() {
+    // limpar o formulario
+    this.form = {};
+  }
 }

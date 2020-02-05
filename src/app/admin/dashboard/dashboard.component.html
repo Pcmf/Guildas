@@ -2,28 +2,28 @@
 
     <div class="menu">
         <!-- <button mat-fab color="primary">Menu</button> -->
-        <button  mat-fab color="primary" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <button mat-fab color="primary" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <!-- <mat-icon>more_vert</mat-icon> -->
             Menu
-          </button>
-          <mat-menu #menu="matMenu">
+        </button>
+        <mat-menu #menu="matMenu">
             <button mat-menu-item>
-              <mat-icon>notifications</mat-icon>
-              <span>Enviar Notificações FB</span>
+                <mat-icon>notifications</mat-icon>
+                <span>Enviar Notificações FB</span>
             </button>
             <button mat-menu-item (click)="sendEmails(0)">
-              <mat-icon>email</mat-icon>
-              <span>Enviar emails</span>
+                <mat-icon>email</mat-icon>
+                <span>Enviar emails</span>
             </button>
             <button mat-menu-item (click)="addPlayer()">
                 <mat-icon>person_add</mat-icon>
                 <span>Criar Player</span>
-              </button>
-            <button mat-menu-item (click)="logOut()">
-              <mat-icon>exit_to_app</mat-icon>
-              <span>Sair</span>
             </button>
-          </mat-menu>
+            <button mat-menu-item (click)="logOut()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Sair</span>
+            </button>
+        </mat-menu>
     </div>
 
     <div class="tabela">
@@ -34,21 +34,24 @@
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
             <!-- id Column -->
-            <ng-container matColumnDef="id" >
+            <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-                <td mat-cell *matCellDef="let element" [class.noAtive]="!element.ative" (click)="selectRow(element)"> {{element.id}} </td>
+                <td mat-cell *matCellDef="let element" [class.noAtive]="!element.ative" (click)="selectRow(element)">
+                    {{element.id}} </td>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="nikname">
                 <th mat-header-cell *matHeaderCellDef> Nik Name </th>
-                <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> <img [src]="element.nikname" alt="" height="40"> </td>
+                <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> <img [src]="element.nikname" alt=""
+                        height="40"> </td>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
-                <td mat-cell *matCellDef="let element" [class.noAtive]="!element.ative" (click)="selectRow(element)"> {{element.name}} </td>
+                <td mat-cell *matCellDef="let element" [class.noAtive]="!element.ative" (click)="selectRow(element)">
+                    {{element.name}} </td>
             </ng-container>
 
             <!-- Telemovel Column -->
@@ -69,20 +72,33 @@
                 <td mat-cell *matCellDef="let element" (click)="selectRow(element)">{{element.guilda}} </td>
             </ng-container>
 
-            <!-- Weight Column -->
+            <!-- Tx Mortes e abates Column -->
             <ng-container matColumnDef="txdeath">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Tx Mortes e Abates </th>
                 <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> {{element.txdeath}} </td>
             </ng-container>
 
-            <!-- Symbol Column -->
+            <!-- Tx tiros na cabeça Column -->
             <ng-container matColumnDef="txheadshot">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Tx Tiros na Cabeça </th>
                 <td mat-cell *matCellDef="let element" (click)="selectRow(element)"> {{element.txheadshot}} </td>
             </ng-container>
 
+            <!-- Delete Column -->
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button color="accent"
+                        title="Click para eliminar player."
+                        aria-label="Click para eliminar player."
+                        (click)="eliminarPlayer(element)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
 </div>

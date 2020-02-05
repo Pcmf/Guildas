@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nikname', 'name', 'guilda', 'telm', 'email', 'txdeath', 'txheadshot'];
+  displayedColumns: string[] = ['id', 'nikname', 'name', 'guilda', 'telm', 'email', 'txdeath', 'txheadshot', 'delete'];
   dataSource: any;
   dataTemp: any = [];
 
@@ -58,6 +58,28 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  eliminarPlayer(player) {
+    console.log(player);
+    // tslint:disable-next-line: no-use-before-declare
+    const dialogConf = this.dialog.open(ConfirmDialog, {
+      width: '300px',
+      data: player
+    });
+
+    dialogConf.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.data.delete('players/', result).subscribe(
+          (resp: any) => {
+               this.ngOnInit();
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    });
+  }
   // funcoes do menu
 
   sendEmails(id) {
@@ -114,5 +136,27 @@ export class EditDialog {
   receiveImage(event) {
     this.data.nikname = event;
   }
+
+}
+
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'confirm-dialog',
+  templateUrl: 'confirm-dialog.html',
+  styleUrls: ['./confirm-dialog.scss']
+})
+// tslint:disable-next-line:component-class-suffix
+export class ConfirmDialog {
+  guildas: any = [];
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 
 }

@@ -41,7 +41,10 @@
   <mat-form-field *ngIf="data.id>0">
     <input matInput [ngModel]="data.updata" placeholder="Ultima Atualização">
   </mat-form-field>
-  <mat-checkbox  matInput [(ngModel)]="data.ative" :after>Ativo</mat-checkbox>
+
+  <mat-checkbox  matInput #ative="ngModel" name="ative" [(ngModel)]="data.ative" :after>Ativo</mat-checkbox>
+
+
 
 </div>
 <div mat-dialog-actions>

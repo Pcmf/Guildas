@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent, EditDialog } from './admin/dashboard/dashboard.component';
+import { DashboardComponent, EditDialog, ConfirmDialog } from './admin/dashboard/dashboard.component';
 import { DataService } from './services/data.service';
 import { RegisterComponent } from './players/register/register.component';
 import { LoadImageComponent } from './load-image/load-image.component';
@@ -23,6 +23,7 @@ import { EmailComponent, NewEmailDialog } from './admin/email/email.component';
     DashboardComponent,
     RegisterComponent,
     EditDialog,
+    ConfirmDialog,
     LoadImageComponent,
     EmailComponent,
     NewEmailDialog
@@ -36,7 +37,7 @@ import { EmailComponent, NewEmailDialog } from './admin/email/email.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  entryComponents: [EditDialog, NewEmailDialog],
+  entryComponents: [EditDialog, NewEmailDialog, ConfirmDialog],
   providers: [DataService, NgxImageCompressService, LoadImageService],
   bootstrap: [AppComponent]
 })

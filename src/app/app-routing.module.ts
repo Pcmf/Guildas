@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'admin' , component: DashboardComponent, canActivate: [AuthGuardAdminService]},
   { path: 'emails' , component: EmailComponent, canActivate: [AuthGuardAdminService]},
   { path: 'login' , component: LoginComponent},
-  { path: '**', component: LoginComponent}
+  { path: '**', component: LoginComponent},
+  {path: '',  redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
