@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  ADDRESS: 'https://guildasrest.calikababy.com/'
+  ADDRESS: 'https://guildas.calikababy.com/guildasRest/'
 };
 
