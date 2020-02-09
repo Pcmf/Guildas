@@ -15,6 +15,7 @@ import { LoadImageComponent } from './load-image/load-image.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { LoadImageService } from './services/load-image.service';
 import { EmailComponent, NewEmailDialog } from './admin/email/email.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EmailComponent, NewEmailDialog } from './admin/email/email.component';
     ReactiveFormsModule
   ],
   entryComponents: [EditDialog, NewEmailDialog, ConfirmDialog],
-  providers: [DataService, NgxImageCompressService, LoadImageService],
+  providers: [DataService, NgxImageCompressService, LoadImageService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
