@@ -12,9 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nikname', 'name', 'guilda', 'telm', 'email', 'txdeath', 'txheadshot', 'delete'];
+  displayedColumns: string[] = ['id', 'nikname', 'name', 'guilda', 'telm', 'email', 'txdeath', 'txheadshot',
+                                 'honra', 'honraatual', 'dif', 'delete'];
   dataSource: any;
   dataTemp: any = [];
+  private honraatual: number;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -34,6 +36,7 @@ export class DashboardComponent implements OnInit {
   constructor(private data: DataService, public dialog: MatDialog, private router: Router) { }
 
   selectRow(player) {
+    this.honraatual = player.honraatual;
     // tslint:disable-next-line: no-use-before-declare
     const dialogRef = this.dialog.open(EditDialog, {
       width: '80%',
@@ -42,6 +45,9 @@ export class DashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        if (result.honraatual != this.honraatual) {
+          result.honra = this.honraatual;
+        }
         this.data.setData('players/' + result.id, result).subscribe(
           (resp: any) => {
             if (result.id == 0) {
